@@ -17,7 +17,7 @@ class SuratSearch extends Surat
     public function rules()
     {
         return [
-            [['id_surat'], 'integer'],
+            [['id_surat', 'id_satker'], 'integer'],
             [['perihal', 'penerima', 'foto'], 'safe'],
         ];
     }
@@ -59,6 +59,7 @@ class SuratSearch extends Surat
         // grid filtering conditions
         $query->andFilterWhere([
             'id_surat' => $this->id_surat,
+            'id_satker' => $this->id_satker,
         ]);
 
         $query->andFilterWhere(['like', 'perihal', $this->perihal])

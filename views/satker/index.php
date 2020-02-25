@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
+                'summary' => false,
                 'columns' => [
                     [
                         'class' => 'yii\grid\SerialColumn',
@@ -34,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'headerOptions' => ['class' => 'text-center text-primary'],
                         'contentOptions' => ['class' => 'text-center']
                     ],
-                    'id_satker',
+                    // 'id_satker',
                     'nama_satker',
 
                     [

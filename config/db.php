@@ -7,6 +7,12 @@ return [
     'password' => '',
     'charset' => 'utf8',
 
+    // 'class' => 'yii\db\Connection',
+    // 'dsn' => 'mysql:host=localhost;dbname=sultrapo_absen',
+    // 'username' => 'sultrapo_sdm',
+    // 'password' => 'sdmpoldasultra',
+    // 'charset' => 'utf8',
+
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
     //'schemaCacheDuration' => 60,

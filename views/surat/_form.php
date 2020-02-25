@@ -1,6 +1,8 @@
 <?php
 
+use app\models\Satker;
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\bootstrap4\ActiveForm;
 use yii\web\View;
 
@@ -67,6 +69,9 @@ $this->registerJs('
             <?= $form->field($model, 'perihal')->textInput(['class' => 'form-control', 'placeholder' => 'Perihal']) ?>
 
             <?= $form->field($model, 'penerima')->textInput(['class' => 'form-control', 'placeholder' => 'Penerima']) ?>
+
+
+            <?= $form->field($model, 'id_satker')->dropDownList(ArrayHelper::map(Satker::find()->all(), 'id_satker', 'nama_satker'), ['prompt' => '- Pilih Satker -'])->label('Satker') ?>
 
 
 

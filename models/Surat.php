@@ -32,6 +32,7 @@ class Surat extends \yii\db\ActiveRecord
             [['perihal', 'penerima'], 'string', 'max' => 50],
             [['foto'], 'string'],
             [['id_surat'], 'unique'],
+            [['id_satker'], 'integer'],
         ];
     }
 
@@ -44,6 +45,7 @@ class Surat extends \yii\db\ActiveRecord
             'perihal' => 'Perihal',
             'penerima' => 'Penerima',
             'foto' => 'Foto',
+            'id_satker' => 'Satker',
         ];
     }
 }

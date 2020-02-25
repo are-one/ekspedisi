@@ -2,21 +2,35 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Beranda';
 ?>
 
 
-    <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-info">
-            <div class="inner">
-              <h3>1</h3>
+<div class="row">
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-info">
+      <div class="inner">
+        <h3><?= $surat ?></h3>
 
-              <p>Surat Ekspedisi</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-message"></i>
-            </div>
-            <a href="Data surat.html" class="small-box-footer">Selanjutnya <i class="fas fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
+        <p>Surat</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-pie-graph"></i>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-success">
+      <div class="inner">
+        <h3><?= $satker ?></h3>
+
+        <p>Satker</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-stats-bars"></i>
+      </div>
+    </div>
+  </div>
+</div>

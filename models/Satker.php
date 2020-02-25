@@ -26,10 +26,8 @@ class Satker extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_satker', 'nama_satker'], 'required'],
-            [['id_satker'], 'integer'],
+            [['nama_satker'], 'required', 'message' => '{attribute} tidak boleh kosong saat melakukan pengisian'],
             [['nama_satker'], 'string', 'max' => 40],
-            [['id_satker'], 'unique'],
         ];
     }
 
@@ -39,7 +37,6 @@ class Satker extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_satker' => 'Id Satker',
             'nama_satker' => 'Nama Satker',
         ];
     }

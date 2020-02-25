@@ -3,12 +3,17 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\SuratSearch;
+use app\models\Surat;
+use app\models\Satker;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\helpers\ArrayHelper;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\data\ActiveDataProvider;
 
 class SiteController extends Controller
 {
@@ -61,7 +66,35 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        if (Yii::$app->user->isGuest) {
+            $searchModel = new SuratSearch();
+
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+            $satker = Satker::find()->all();
+            $satker = ArrayHelper::map($satker, 'id_satker', 'nama_satker');
+            // if (Yii::$app->request->isAjax) {
+            //     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            //     $queryParam = array_slice(Yii::$app->request->queryParams, 1);
+            //     // print_r($queryParam);
+            //     // die;
+            //     $dataProvider = $searchModel->search($queryParam);
+
+            //     return $this->renderAjax('_surat', [
+            //         'dataProvider' => $dataProvider,
+            //         'searchModel' => $searchModel,
+            //     ]);
+            // }
+            return $this->render('surat', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'satker' => $satker
+            ]);
+        } else {
+            $surat = Surat::find()->count();
+            $satker = Satker::find()->count();
+
+            return $this->render('index', ['surat' => $surat, 'satker' => $satker]);
+        }
     }
 
     /**
@@ -71,6 +104,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+        $this->layout = 'main-login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
