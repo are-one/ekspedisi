@@ -38,7 +38,7 @@ $(function() {
     'template' => '
     {input}
  ' .
-        Html::resetButton('Reset', ['class' => 'mt-auto btn btn-sm btn-outline-secondary', 'id' => 'reset'])
+        Html::resetButton('Reset', ['class' => 'mt-auto btn btn-sm btn-outline-success', 'id' => 'reset'])
         . '
     '
 ])->dropDownList(ArrayHelper::map(Satker::find()->orderBy(['id_satker' => SORT_ASC])->all(), 'id_satker', 'nama_satker'), [
