@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?php Pjax::begin(); ?>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); 
+        <?php // echo $this->render('_search', ['model' => $searchModel]);
         ?>
         <div class="card-body">
             <?= GridView::widget([

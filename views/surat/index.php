@@ -12,15 +12,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="surat-index">
     <div class="card card-primary card-outline">
+        <?php Pjax::begin(); ?>
         <div class="card-header">
             <p>
                 <?= Html::a('<i class="fas fa-plus"></i> Surat', ['create'], ['class' => 'btn btn-primary']) ?>
             </p>
+
+            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
         </div>
 
-        <?php Pjax::begin(); ?>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); 
-        ?>
+
         <div class="card-body">
 
             <?= GridView::widget([

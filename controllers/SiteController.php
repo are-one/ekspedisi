@@ -70,24 +70,10 @@ class SiteController extends Controller
             $searchModel = new SuratSearch();
 
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-            $satker = Satker::find()->all();
-            $satker = ArrayHelper::map($satker, 'id_satker', 'nama_satker');
-            // if (Yii::$app->request->isAjax) {
-            //     \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            //     $queryParam = array_slice(Yii::$app->request->queryParams, 1);
-            //     // print_r($queryParam);
-            //     // die;
-            //     $dataProvider = $searchModel->search($queryParam);
 
-            //     return $this->renderAjax('_surat', [
-            //         'dataProvider' => $dataProvider,
-            //         'searchModel' => $searchModel,
-            //     ]);
-            // }
             return $this->render('surat', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
-                'satker' => $satker
             ]);
         } else {
             $surat = Surat::find()->count();

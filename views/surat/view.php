@@ -15,15 +15,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card card-primary card-outline">
         <div class="card-header">
             <p>
-                <?= Html::a('Update', ['update', 'id' => $model->id_surat], ['class' => 'btn btn-primary']) ?>
-                <?= Html::a('Delete', ['delete', 'id' => $model->id_surat], [
-                    'class' => 'btn btn-danger',
-                    'data' => [
-                        'confirm' => 'Are you sure you want to delete this item?',
-                        'method' => 'post',
-                    ],
-                ]) ?>
-                <?= Html::a('Data Surat', ['index'], ['class' => 'btn btn-success']) ?>
+                <?php if (!Yii::$app->user->isGuest) : ?>
+                    <?= Html::a('Update', ['update', 'id' => $model->id_surat], ['class' => 'btn btn-primary']) ?>
+                    <?= Html::a('Delete', ['delete', 'id' => $model->id_surat], [
+                        'class' => 'btn btn-danger',
+                        'data' => [
+                            'confirm' => 'Are you sure you want to delete this item?',
+                            'method' => 'post',
+                        ],
+                    ]) ?>
+                <?php endif; ?>
+                <?= Html::a('Data Surat', [(Yii::$app->user->isGuest) ? 'site/index' : 'index'], ['class' => 'btn btn-success']) ?>
             </p>
         </div>
         <div class="card-body">

@@ -27,19 +27,19 @@ $this->registerJs($js);
 ?>
 <div class="surat-index">
     <div class="card card-primary card-outline">
+
+        <?php Pjax::begin(); ?>
         <div class="card-header">
             <p>
                 <?= Html::a('<i class="fas fa-plus"></i> Surat', ['surat/create'], ['class' => 'btn btn-primary']) ?>
             </p>
-            <div class="col-lg-3 ml-auto">
-                <?= Html::dropDownList('Satker', null, $satker, ['class' => 'form-control', 'id' => 'satker', 'prompt' => '- Pilih Satker -']) ?>
-            </div>
+
+            <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+
         </div>
 
 
-        <?php Pjax::begin(); ?>
-        <?php // echo $this->render('_search', ['model' => $searchModel]); 
-        ?>
+
         <div class="card-body table-responsive">
 
             <div id="tabel">
@@ -68,7 +68,12 @@ $this->registerJs($js);
                             'visibleButtons' => [
                                 'update' => false,
                                 'delete' => false,
-                            ]
+                            ],
+                            'buttons' => [
+                                'view' => function ($url, $model, $key) {
+                                    return Html::a('<i class="fas fa-eye"></i>', ['surat/view', 'id' => $key]);
+                                },
+                            ],
                         ],
                     ],
                     'pager' => [
