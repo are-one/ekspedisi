@@ -4,11 +4,29 @@ namespace app\models;
 
 class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+    public $password2;
+
     public static function tableName()
     {
         return '{{user}}';
     }
+    public function rules()
+    {
+        return [
+            // username and password are both required
+            [['username', 'password', 'password2'], 'required', 'message' => '{attribute} tidak boleh kosong.'],
+            [['password'], 'required'],
+            // rememberMe must be a boolean value
+            ['password2', 'compare', 'compareAttribute' => 'password', 'message' => '{attribute} tidak cocok'],
+        ];
+    }
 
+    public function attributeLabels()
+    {
+        return [
+            'password2' => 'Ulangi password',
+        ];
+    }
 
     /**
      * {@inheritdoc}

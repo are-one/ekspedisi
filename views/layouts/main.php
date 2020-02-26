@@ -173,6 +173,14 @@ if (Yii::$app->user->isGuest) :
                     </p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="index.php?r=user/update&id=1" class="nav-link <?= ($controller == 'user') ? 'active' : '' ?>">
+                    <i class="nav-icon fas  fa-unlock-alt"></i>
+                    <p>
+                      Ganti password
+                    </p>
+                  </a>
+                </li>
               </ul>
             </nav>
             <!-- /.sidebar-menu -->

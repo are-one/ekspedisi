@@ -39,7 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'perihal',
                     'penerima',
-                    'foto',
+                    [
+                        'attribute' => 'foto',
+                        'format' => 'raw',
+                        'value' => function ($model) {
+                            return Html::img('@web/' . $model->foto, ['width' => '50px']);
+                        }
+                    ],
 
                     [
                         'class' => 'yii\grid\ActionColumn',

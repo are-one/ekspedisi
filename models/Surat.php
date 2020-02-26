@@ -28,7 +28,7 @@ class Surat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['perihal', 'penerima'], 'required', 'message' => '{attribute} tidak boleh kosong.'],
+            [['perihal', 'penerima', 'id_satker'], 'required', 'message' => '{attribute} tidak boleh kosong.'],
             [['perihal', 'penerima'], 'string', 'max' => 50],
             [['foto'], 'string'],
             [['id_surat'], 'unique'],

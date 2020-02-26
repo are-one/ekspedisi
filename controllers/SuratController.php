@@ -118,9 +118,21 @@ class SuratController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $foto_lama = $model->foto;
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_surat]);
+        if ($model->load(Yii::$app->request->post())) {
+            if (!empty($foto_lama)) {
+                unlink($foto_lama);
+            }
+
+            $data_gambar = $model->foto;
+            $model->foto = 'uploads/' .  $model->id_surat . time() . '.png';
+
+            if ($this->olahGambar($data_gambar, $model->foto) > 0) {
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id_surat]);
+                }
+            }
         }
 
         return $this->render('update', [

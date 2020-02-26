@@ -18,7 +18,7 @@ $(function() {
     });
     
     $("#reset").click(function() {
-        $("#id_satker option[value=0]").siblings().removeAttr("selected");
+        $("#id_satker option[value=\'\']").siblings().removeAttr("selected");
         $("#tekan").click();
     });
 });', Views::POS_END);
@@ -42,7 +42,7 @@ $(function() {
         . '
     '
 ])->dropDownList(ArrayHelper::map(Satker::find()->orderBy(['id_satker' => SORT_ASC])->all(), 'id_satker', 'nama_satker'), [
-    'prompt' => ['options' => ['value' => 0], 'text' => '- pilih satker -'],
+    'prompt' => ['options' => ['value' => ''], 'text' => '- pilih satker -'],
     'id' => 'id_satker',
     'class' => 'col-md-8'
 ])->label(false) ?>

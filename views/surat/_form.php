@@ -89,6 +89,8 @@ $this->registerJs('
         <div class="card-footer">
             <div class="form-group">
                 <?= Html::submitButton('Simpan', ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Kembali', ['site/index'], ['class' => 'btn btn-danger']) ?>
+
             </div>
         </div>
         <?php ActiveForm::end(); ?>
