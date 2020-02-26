@@ -91,12 +91,12 @@ class SatkerController extends Controller
 
             Model::loadMultiple($models, Yii::$app->request->post());
 
-            if (Yii::$app->request->isAjax) {
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return ArrayHelper::merge(
-                    ActiveForm::validateMultiple($models),
-                );
-            }
+            // if (Yii::$app->request->isAjax) {
+            //     Yii::$app->response->format = Response::FORMAT_JSON;
+            //     return ArrayHelper::merge(
+            //         ActiveForm::validateMultiple($models),
+            //     );
+            // }
             // validate all models
             $valid = Model::validateMultiple($models);
 
