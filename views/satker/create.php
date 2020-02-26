@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="satker-create">
 
     <?= $this->render('_form', [
-        'model' => $model,
+        'models' => $models,
     ]) ?>
 
 </div>

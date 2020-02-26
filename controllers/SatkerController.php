@@ -4,11 +4,15 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Satker;
+use app\models\Model;
 use app\models\CariSatker;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\bootstrap4\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /**
  * SatkerController implements the CRUD actions for Satker model.
@@ -77,14 +81,65 @@ class SatkerController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Satker();
+        $models = [new Satker()];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_satker]);
+
+        if (Yii::$app->request->post() != null) {
+
+
+            $models = Model::createMultiple(Satker::classname());
+
+            Model::loadMultiple($models, Yii::$app->request->post());
+
+            if (Yii::$app->request->isAjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ArrayHelper::merge(
+                    ActiveForm::validateMultiple($models),
+                );
+            }
+            // validate all models
+            $valid = Model::validateMultiple($models);
+
+
+            if ($valid) {
+
+                $transaction = \Yii::$app->db->beginTransaction();
+
+
+                try {
+
+                    // if ($flag = $modelCustomer->save(false)) {
+
+                    foreach ($models as $model) {
+
+                        // $model->customer_id = $model->id;
+
+                        if (!($flag = $model->save(false))) {
+
+                            $transaction->rollBack();
+
+                            break;
+                        }
+                    }
+                    // }
+
+
+                    if ($flag) {
+
+                        $transaction->commit();
+
+                        return $this->redirect(['index']);
+                    }
+                } catch (Exception $e) {
+
+                    $transaction->rollBack();
+                }
+            }
         }
 
+
         return $this->render('create', [
-            'model' => $model,
+            'models' => (empty($models)) ? [new Satker()] : $models
         ]);
     }
 

@@ -43,9 +43,9 @@ class AppAsset extends AssetBundle
         // <!-- Bootstrap 4 -->
         'plugins/bootstrap/js/bootstrap.bundle.min.js',
         // <!-- ChartJS -->
-        'plugins/chart.js/Chart.min.js',
+        // 'plugins/chart.js/Chart.min.js',
         // <!-- Sparkline -->
-        'plugins/sparklines/sparkline.js',
+        // 'plugins/sparklines/sparkline.js',
         // <!-- JQVMap -->
         'plugins/jqvmap/jquery.vmap.min.js',
         'plugins/jqvmap/maps/jquery.vmap.usa.js',
@@ -63,7 +63,7 @@ class AppAsset extends AssetBundle
         // <!-- AdminLTE App -->
         'dist/js/adminlte.js',
         // <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        'dist/js/pages/dashboard.js',
+        // 'dist/js/pages/dashboard.js',
         // <!-- AdminLTE for demo purposes -->
         'dist/js/demo.js',
         'js/webcam.min.js',
