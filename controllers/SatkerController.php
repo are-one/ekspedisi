@@ -137,7 +137,6 @@ class SatkerController extends Controller
             }
         }
 
-
         return $this->render('create', [
             'models' => (empty($models)) ? [new Satker()] : $models
         ]);
